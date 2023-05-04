@@ -1,0 +1,48 @@
+﻿@model List<ProductoModel>
+@{
+    ViewData["Title"] = "MostrarProductos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Lista de Productos
+    </div>
+    <div class="card-body">
+        <a asp-action="GuardarProducto" asp-controller="Productos" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id Producto</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio base</th>
+                    <th>Precio Venta</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IdProducto</td>
+                        <td>@item.NombreProducto</td>
+                        <td>@item.DescripcionProducto</td>
+                        <td>@item.CantidadDisponible</td>
+                        <td>@item.PrecioBase</td>
+                        <td>@item.PrecioVenta</td>
+                        <td>
+                            <a asp-action="EditarProducto" asp-controller="Productos" class="btn btn-primary btn-sm" asp-route-IdProducto="@item.IdProducto">Editar</a>
+                            <a asp-action="EliminarProducto" asp-controller="Productos" class="btn btn-danger btn-sm" asp-route-IdProducto="@item.IdProducto">Eliminar</a>
+                            <a asp-action="VentaProducto" asp-controller="Productos" class="btn btn-success btn-sm" asp-route-IdProducto="@item.IdProducto">Venta</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

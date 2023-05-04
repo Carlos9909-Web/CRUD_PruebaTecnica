@@ -1,0 +1,51 @@
+﻿@model List<VentaModel>
+@{
+    ViewData["Title"] = "MostrarGanancias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Resumen de Ventas
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <table class="table table-bordered" id="tablaGanancia">
+                    <thead>
+                        <tr>
+                            <th>Id Venta</th>
+                            <th>Id Producto</th>
+                            <th>Nombre Producto</th>
+                            <th>Precio base</th>
+                            <th>Precio Venta</th>
+                            <th>Ganancia Venta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdVenta</td>
+                                <td>@item.IdProducto</td>
+                                <td>@item.NombreProducto</td>
+                                <td>@item.PrecioBase</td>
+                                <td class="venta">@item.PrecioVenta</td>
+                                <td class="ganancia">@item.GananciaVenta</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <div class="card-body">
+                    <h5 class="card-title">Resumen de Ganancias</h5>
+                    <p class="card-text">Venta total: $<span id="ventaTotal"></span></p>
+                    <p class="card-text">Total de ganancia: $<span id="gananciaTotal"></span></p>
+                    <p class="card-text">Total de productos vendidos: <span id="CatidadVendidos"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

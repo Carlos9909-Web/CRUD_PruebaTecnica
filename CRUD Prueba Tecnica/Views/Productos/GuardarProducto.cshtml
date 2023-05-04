@@ -1,0 +1,46 @@
+﻿@model ProductoModel
+@{
+    ViewData["Title"] = "GuardarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Crear Producto
+    </div>
+    <div class="card-body">
+        <form asp-action="GuardarProducto" asp-controller="Productos" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nombre del producto</label>
+                <input asp-for="NombreProducto" type="text" class="form-control">
+                <span asp-validation-for="NombreProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Descripcion del producto</label>
+                <textarea asp-for="DescripcionProducto" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <span asp-validation-for="DescripcionProducto" class="text-danger"></span>
+   
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm">
+                    <label class="form-label">Cantidad Disponible</label>
+                    <input asp-for="CantidadDisponible" type="number" class="form-control">
+                    <span asp-validation-for="CantidadDisponible" class="text-danger"></span>
+                </div>
+            <div class="mb-3 col-sm">
+                <label class="form-label">Precio Base</label>
+                <input asp-for="PrecioBase" type="number" class="form-control">
+                <span asp-validation-for="PrecioBase" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-sm">
+                <label class="form-label">Precio Venta</label>
+                <input asp-for="PrecioVenta" type="number" class="form-control">
+                <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="MostrarProductos" asp-controller="Productos" class="btn btn-warning">Volver a la lista</a>
+        </form>
+    </div>
+</div>
+
